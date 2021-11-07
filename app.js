@@ -1,18 +1,17 @@
-//Load HTTP module
-const http = require("http");
-const hostname = '127.0.0.1';
-const port = 5151;
+const express = require('express');
+const app = express();
 
-//Create HTTP server and listen on port 3000 for requests
-const server = http.createServer((req, res) => {
+app.get('/', (req, res) =>{
 
-  //Set the response HTTP header with HTTP status and Content type
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World\n');
+
+    res.send("Bienvenido a la pagina principal...(Home Page) test test"); // texto que nos recibira en la pagina de inicio de la web
+
+
 });
 
-//listen for request on port 3000, and as a callback function have the port listened on logged
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+app.listen(); // hace que el servidor web este a la escucha de un puerto particular especificado
+
+const port = process.env.port || 3000 ; 
+app.listen(port, () => {
+
+    console.log("prueba de texto para el log de la consola"); // esta es la funcion callback que se ejecu
